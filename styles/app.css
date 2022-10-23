@@ -1,37 +1,277 @@
 :root{
-
- /* Primary */
-
 --Lime-Green: hsl(163, 72%, 41%);
 --Bright-Red: hsl(356, 69%, 56%);
-
 --Facebook: hsl(208, 92%, 53%);
 --Twitter: hsl(203, 89%, 53%);
 /* --Instagram: linear gradient hsl(37, 97%, 70%) to hsl(329, 70%, 58%) */
---YouTube: hsl(348, 97%, 39%)
-
-/* Dark Theme */
-/* --Toggle: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%) */
-
- /* Light Theme */
---Toggle: hsl(230, 22%, 74%);
-
- /* Neutral */
-
- /* Dark Theme */
+--YouTube: hsl(348, 97%, 39%);
+/* --Toggle: linear gradient hsl(210, 78%, 56%) to hsl(146, 68%, 55%)
+--Toggle: hsl(230, 22%, 74%); */
 --Very-Dark-Blue-BG: hsl(230, 17%, 14%);
 --Very-Dark-Blue-Top-BG: hsl(232, 19%, 15%);
 --Dark-Desaturated-Blue-Card-BG: hsl(228, 28%, 20%);
 --Desaturated-Blue-Text: hsl(228, 34%, 66%);
 --White-Text: hsl(0, 0%, 100%);
-
-/* Light Theme */
 --White-BG: hsl(0, 0%, 100%);
 --Very-Pale-Blue-Top-BG-Pattern: hsl(225, 100%, 98%);
 --Light-Grayish-Blue-Card-BG: hsl(227, 47%, 96%);
 --Dark-Grayish-Blue-Text: hsl(228, 12%, 44%);
---Very-Dark-Blue-Text-: hsl(230, 17%, 14%);
+--Very-Dark-Blue-Text: hsl(230, 17%, 14%);
 }
+
 body{
     font-family: 'Inter', sans-serif;
+    background: var(--Very-Dark-Blue-BG);
+}
+html {
+    /* Para utilizar 1rem = 10px */
+    font-size: 62.5%;
+}
+  *, *:before, *:after {
+    box-sizing: inherit;
+}
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+.container, .container-sociales, .container-estadisticas{
+    width: 90%;
+    margin: 0 auto;
+}
+.bg-top{
+    width: 100%;
+    height: 25vh;
+    background-color: var(--Very-Dark-Blue-Top-BG);
+    border-bottom-left-radius: 2.5rem;
+    border-bottom-right-radius: 2.5rem;
+    position: absolute;
+    top: 0;
+    z-index: -1;
+}
+@media (min-width: 1440px) {
+     .bg-top{
+        height: 30vh;
+     }
+}
+.container{
+    color: #fff;
+    z-index: 3;
+    height: 20vh;
+    padding: 2rem 0;
+}
+.container section{
+    height: 100%;
+    width: 100%;
+    grid-template-rows: repeat(2,1fr);
+}
+@media (min-width: 1440px) {
+    .container{
+       width: 80%;
+    }
+    .container section{
+        display: unset;
+        grid-template-rows: unset;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        height: 70%;
+    }
+}
+.container section div{
+    padding: 1.4rem 0;
+}
+.container h3{
+    font-size: 2rem;
+}
+.container-info{
+    border-bottom: 1px solid var(--Light-Grayish-Blue-Card-BG);
+}
+h3,p{
+    text-transform: capitalize;
+    font-weight: 700;
+}
+.container p{
+    font-size: 1.3rem;
+    color: var(--Desaturated-Blue-Text);
+}
+
+/* BOTON */
+.container-button{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+@media (min-width: 1440px) {
+    .container-info{
+       border-bottom: unset;
+    }
+    .container-button{
+        gap: 2rem;
+    }
+}
+.opcion{
+    color: var(--Light-Grayish-Blue);
+}
+.lbl-switch{
+    padding: .65rem 2.4rem;
+    background-image: linear-gradient(to right, hsl(210, 78%, 56%) , hsl(146, 68%, 55%) );
+    border-radius: 100px;
+    position: relative;
+    cursor: pointer;
+}
+#btn-switch:checked~ .lbl-switch{
+    background-image: linear-gradient(to left, hsl(236, 72%, 79%), hsl(237, 63%, 64%));
+}
+.lbl-switch::after{
+    position: absolute;
+    content: '';
+    padding: 1rem;
+    border-radius: 100px;
+    top: 2px;
+    left: 5px;
+    transition: .3s;
+    background: var(--Very-Dark-Blue-Top-BG);
+    z-index: 2;
+}
+#btn-switch:checked~ .lbl-switch::after{
+    left: 24px;
+}
+#btn-switch{
+    display: none;
+}
+.container-sociales{
+    display: grid;
+    grid-template-rows: repeat(4,1fr);
+    gap: 2.5rem;
+    padding-bottom: 3rem;
+}
+@media (min-width: 1440px) {
+     .container-sociales{
+        grid-template-rows: unset;
+        grid-template-columns: repeat(4,1fr);
+        width: 80%;
+        margin-top: -4rem;
+        gap: 3rem;
+     }
+}
+.social-facebook, .icon-facebook, .arrow{
+    display: flex;
+}
+.social-facebook{
+    flex-direction: column;
+    align-items: center;
+    border-top: 4px solid var(--Facebook);
+    border-radius: 4px;
+    padding: 3rem 0;
+    background-color: var(--Dark-Desaturated-Blue-Card-BG);
+}
+.icon-facebook, .arrow{
+    align-items: center;
+    gap: 1rem;
+}
+.icon-facebook p{
+    font-size: 1.3rem;
+    font-weight: 700;
+    text-transform: unset;
+}
+.icon-facebook p, .follow{
+    color: var(--Desaturated-Blue-Text);
+}
+.social-facebook h2{
+    font-weight: 700;
+    font-size: 5.5rem;
+    padding-top: 1.8rem;
+    color: var(--White-Text);
+    text-align: center;
+}
+.follow{
+    font-weight: 400;
+    text-transform: uppercase;
+    font-size: 1.3rem;
+    letter-spacing: .5rem;
+    padding-bottom: 2.6rem;
+    margin-top: .5rem;
+}
+.arrow p{
+    color: var(--White-Text);
+    font-weight: 400;
+    font-size: 1.2rem;
+}
+.social-twitter{
+    border-top: 4px solid var(--Twitter);
+}
+.social-instagram{
+    border-top: 4px solid;
+    border-image-slice: 1;
+    border-width: 4px;
+    border-image-source: linear-gradient(to right, hsl(37, 97%, 70%) , hsl(329, 70%, 58%) );
+}
+.social-youtube{
+    border-top: 4px solid var(--YouTube);
+}
+.arrow .text-green{
+    color: var(--Lime-Green);
+}
+.arrow .text-red{
+    color: var(--Bright-Red);
+}
+.container-estadisticas{
+    display: grid;
+    grid-template-rows: 3% 97%;
+    padding-top: 1.5rem;
+    gap: 2rem;
+    padding-bottom: 5rem;
+}
+@media (min-width: 1440px) {
+     .container-estadisticas{
+        width: 80%;
+        gap: 4rem;
+        padding-bottom: 10rem;
+     }
+}
+.helper{
+    display: grid;
+    grid-template-rows: repeat(8,1fr);
+    gap: 2rem;
+    width: 100%;
+    margin: 0 auto;
+}
+@media (min-width: 1440px) {
+     .helper{
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: repeat(4, 1fr);
+        gap: 2.5rem;
+     }
+}
+.over{
+    font-weight: 700;
+    font-size: 2rem;
+    color: var(--White-Text);
+}
+.card-estadisticos{
+    width: 100%;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    background-color: var(--Dark-Desaturated-Blue-Card-BG);
+    border-radius: 1rem;
+}
+.icons, .div-arrow{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 2rem;
+}
+.div-arrow{
+    padding-top: 0;
+}
+.icons p{
+    font-size: 1.3rem;
+    font-weight: 700;
+    color: var(--Desaturated-Blue-Text);
+}
+.number{
+    font-size: 3rem;
+    color: var(--White-Text);
+    font-weight: 700;
 }
